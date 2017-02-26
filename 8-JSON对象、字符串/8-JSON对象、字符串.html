@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /*拼接字符串*/
+//        var prod = {
+//            name: '女装',
+//            styles: ['短款', '冬季', '春装']
+//        };
+//        function getTpl(data) {
+//            var str = '';
+//            str = "<dl class='product'>" +
+//                    "<dt>" + data.name + "</dt>"
+//                    + "<dd>" + data.name + "</dd>"
+//                    + "<dd>" + data.name + "</dd>"
+//                    + "<dd>" + data.name + "</dd>"
+//            +"</dl>"
+//            return str;
+//        }
+//        var result = getTpl(prod);
+//         console.log(result)
+
+        /*判断回文函数*/
+//        function huiwenIs(str){
+//            var arr=str.split("");
+//            var arrObj =[];
+//            var arrObj = arr.reverse();
+//            var arr=str.split("");
+//            if(arr == arrObj){
+//                console.log("是回文")
+//            }else {
+//                console.log("不是回文")
+//            }
+//        }
+//        var str1="asaa"
+//        huiwenIs(str1)
+
+     /*   写一个函数，统计字符串里出现出现频率最多的字符(如果有多个都需要展示)*/
+
+//        function moreNum(str){
+//            var max=0;
+//            var arr= str.split("");
+//            var num={};
+//            var obj1=[]
+//            for(var i=0;i<arr.length;i++){
+//               if(num[arr[i]]){
+//                   num[arr[i]]+=num[arr[i]];
+//               }else {
+//                   num[arr[i]]=1
+//               }
+//            }
+//            for(value in num){
+//                if(num[value] > max){
+//                    max = num[value]
+//                }
+//            }
+//            for(value in num){
+//                if(num[value] === max){
+//                    obj1.push(value);
+//                }
+//            }
+//            console.log('出现次数最多的是'+obj1+'出现了'+max+'次') ;
+//
+//        }
+//        moreNum('111555aaaaaxxx')
+
+        /*写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如 (***)*/
+
+        function camelize(str){
+            var arr = s.split('-')
+            var sNew = arr[0]
+            for(var i = 1; i < arr.length; i++){
+                var temp = arr[i][0].toUpperCase() + arr[i].substring(1, arr[i].length)
+                sNew += temp
+            }
+            return sNew
+        }
+    </script>
+</head>
+<body>
+
+
+
+
+</body>
+</html>
