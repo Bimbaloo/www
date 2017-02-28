@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>慈兴</title>
+    <script src="js\jquery-1.11.1.min.js"></script>
+    <style type="text/css">
+        body,table{
+            font-size:12px;
+        }
+        .table_box{text-align: center;padding:20px}
+        input{outline:none;padding: 0 2px}
+        .tableHead,.tableBody{
+            table-layout:fixed;
+            empty-cells:show;
+            border-collapse: collapse;
+            width: 300px;
+            display: inline-table;
+        }
+        .table_box{
+            width:100%;
+            box-sizing: border-box;padding: 0 20px
+        }
+        .tableHead,.tableBody{
+            border:1px solid #000;
+            color:#000;
+        }
+        .tableHead{border-bottom: none}
+        .tableBody{border-top: none}
+        .tableHead  th,.tableBody th {
+            background-color: #EEEEEE;
+        }
+        .tableBody td,.tableHead th{
+            height:30px;
+            border:1px solid #cccccc;
+            padding:0;
+            text-align: center;
+        }
+        .checkbox{
+            width: 80px;
+        }
+        .tableHead th{border-bottom: none}
+    </style>
+</head>
+<body>
+
+<div class="table_box">
+    <div style="margin: 0;padding: 0">
+        <table class="tableHead" >
+            <tr>
+                <th class="checkbox"><input id="checks" type="checkbox"></th>
+                <th class="name">名称</th>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table class="tableBody">
+            <tr>
+                <td class="checkbox"><input name="checkname" type="checkbox"></td>
+                <td class="name">乱七八糟的名称</td>
+            </tr>
+            <tr>
+                <td class="checkbox"><input name="checkname" type="checkbox"></td>
+                <td class="name">乱七八糟的名称</td>
+            </tr>
+            <tr>
+                <td class="checkbox"><input name="checkname" type="checkbox"></td>
+                <td class="name">乱七八糟的名称</td>
+            </tr>
+            <tr>
+                <td class="checkbox"><input name="checkname" type="checkbox"></td>
+                <td class="name">乱七八糟的名称</td>
+            </tr>
+            <tr>
+                <td class="checkbox"><input name="checkname" type="checkbox"></td>
+                <td class="name">乱七八糟的名称</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    $("#checks").on("click",
+            function(){
+                if(this.checked){
+                    $("input[name='checkname']").prop('checked', true)
+                }else{
+                    $("input[name='checkname']").prop('checked', false)
+                }
+            }
+    );
+    $("input[name='checkname']").on("click",
+            function(){
+                if(!this.checked){
+                    $("#checks").prop('checked', false)
+                }
+            })
+
+</script>
+</body>
+</html>

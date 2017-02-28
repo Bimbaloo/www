@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>注塑机联网管理系统</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <link href="../css/base.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<!--<div id="header">-->
+    <!--<div id="logo" onclick="modalshow()"></div>-->
+    <!--<span><i class="fa icon-signout"></i></span>-->
+    <!--<div data-toggle="modal" data-target="#passwd" style="overflow: hidden;width: auto">-->
+        <!--<ul id="user">-->
+            <!--<li class="number">10040201</li>-->
+            <!--<li>系统管理员</li>-->
+        <!--</ul>-->
+        <!--<span><i class="fa icon-user"></i> </span>-->
+    <!--</div>-->
+<!--</div>-->
+<div id="header">
+    <div style="float:left;background:#2e3f4f;width:160px;height:120px;">
+        <img src="../images/logo3.png" style="display: grid;margin-left:19px;margin-top:17px;">
+  <span style="float: left;color: #fff;margin-left: 28px;margin-top: 9px;font-size: 25px;">慈兴集团</span>
+    </div>
+    <div id="logo" onclick="modalshow()" style=""></div>
+    <span><i class="fa icon-signout"></i></span>
+    <div data-toggle="modal" data-target="#passwd" style="overflow: hidden;width: 500px;float: right;">
+        <ul id="user">
+            <li class="number">10040201</li>
+            <li>系统管理员</li>
+        </ul>
+        <span><i class="fa icon-user"></i> </span>
+    </div>
+</div>
+<div id="left">
+    <ul id="menu">
+        <li style="margin-top:10px" data-toggle="modal" data-target="#sm" id="jqsm">
+            <div class="iconbox jqsm"></div>
+            <span>机器扫描</span>
+        </li>
+        <li class="thisli" id="scjh">
+            <div class="iconbox sljc"></div>
+            <span>生产计划</span>
+        </li>
+        <li id="gygl">
+            <div class="iconbox bj"></div>
+            <span>生产工艺</span>
+        </li>
+        <li data-toggle="modal" data-target="#bj">
+            <div class="iconbox scjk"></div>
+            <span>设备监控</span>
+        </li>
+        <li id="SPCleft">
+            <div class="iconbox kzq"></div>
+            <span>SPC控制图</span>
+        </li>
+        <li  data-toggle="modal" data-target="#sljc">
+            <div class="iconbox sbdj"></div>
+            <span>设备点检</span>
+        </li>
+    </ul>
+</div>
+<div id="right_scjh" class="">
+    <div id="message">
+        <div id="zhusuji_box">
+            <div id="zhuangtai" class="normal">
+                <span class="zhuangtai hide">该设备运行正常</span>
+                <span class="zhuangtai hide">该设备运行异常</span>
+                <span class="zhuangtai hide">该设备已报废</span>
+                <span class="zhuangtai hide">该设备已被封存</span>
+            </div>
+            <div id="zhusuji"></div>
+        </div>
+
+        <div id="guige_box">
+            <div class="guige">
+                <div class="guige_left guige_leftbj">
+                    <span>当期工位</span>
+                </div>
+                <span class="guige_right">G00000001 外圈磨外径</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige">
+                <div class="guige_left guige_leftbj">
+                    <span>当前设备</span>
+                </div>
+                <span class="guige_right">SB00000001 外圈磨机床</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige">
+                <div class="guige_left guige_leftbj">
+                    <span>工作中心</span>
+                </div>
+                <span class="guige_right">CS001-2 CS001-2 慈兴外圈磨加工中心</span>
+                <div class="clear"></div>
+            </div>
+
+            <hr>   <!--分割线-->
+            <div class="guige">
+                <div class="guige_left bold">当前生产物料:</div>
+                <span class="guige_right">QJ210 A35-001  轴承外圈</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige fleft">
+                <div class="guige_left bold">计划开始时间:</div>
+                <span class="guige_right">2016-10-11 18:53</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige fright">
+                <div class="guige_left">计划合格:</div>
+                <span class="guige_right" id="guanli">1000pcs</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige fleft">
+                <div class="guige_left bold">计划结束时间:</div>
+                <span class="guige_right">2016-12-11 18:53</span>
+                <div class="clear"></div>
+            </div>
+            <div class="guige fright">
+                <div class="guige_left">计划生产:</div>
+                <span class="guige_right" id="yunxing">1054pcs</span>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    <div id="tables">
+        <div class="table_planned  tables" style="border: none ">
+            <div class="header">
+                <div class="bodytitle ">当前工位计划:QJ210 A35-001 轴承外圈</div>
+            </div>
+
+            <div class="modal-body">
+                <table class="table_nav1 ">
+                    <tr>
+                        <td class="f2">计划生产</td>
+                        <td class="ff2">1054pcs</td>
+                        <td class="f2">实际生产</td>
+                        <td class="ff2">500pcs</td>
+                    </tr>
+                    <tr>
+                        <td class="f2">计划合格</td>
+                        <td class="ff2">1000pcs</td>
+                        <td class="f2">实际合格</td>
+                        <td class="ff2">490pcs</td>
+                    </tr>
+                    <tr></tr>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary hide">
+                    设备报修
+                </button>
+                <button type="button" class="btn btn-primary hide">
+                    设备盘点
+                </button>
+                <button type="button" class="btn btn-primary">
+                    工位报检
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="right_scgy" class="hide">
+    <div id="table">
+        <div class="table_planned  tables" style="border: none ">
+            <div class="header">
+                <div class="bodytitle ">生产工艺</div>
+            </div>
+            <div class="modal-body">
+                <table class="table_nav1 ">
+                    <tr>
+                        <td class="f2">当前工位</td>
+                        <td class="ff2">G00000001 外圈磨外径</td>
+                        <td class="f2">当前设备</td>
+                        <td class="ff2">SB00000001 外圈磨机床</td>
+                    </tr>
+                    <tr>
+                        <td class="f2">编号</td>
+                        <td class="ff2">00000073</td>
+                        <td class="f2">版本号</td>
+                        <td class="ff2">V1</td>
+                    </tr>
+                    <tr>
+                        <td class="f2">名称</td>
+                        <td class="ff2">外圈磨加工作业路线</td>
+                        <td class="f2">工作中心</td>
+                        <td class="ff2">CS001-2 慈兴外圈磨加工中心</td>
+                    </tr>
+                    <tr>
+                        <td class="f2">物料</td>
+                        <td class="ff2">QJ210 A35-001 轴承外圈</td>
+                        <td class="f2"></td>
+                        <td class="ff2"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="table_production tables">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="100">作业路线行号</th>
+                    <th width="200">作业单元</th>
+                    <th width="300">工步</th>
+                    <th width="100">报废率(%)</th>
+                </tr>
+                </thead>
+            </table>
+            <div class="content demo-yx">
+                <table class="xwtable">
+                    <tbody>
+                    <tr class="bg1">
+                        <td width="100">10</td>
+                        <td width="200">D00000010 上料</td>
+                        <td width="300">20001 外圈磨加工_上料机</td>
+                        <td width="100">1</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>20</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="bg1 bg3">
+                        <td>30</td>
+                        <td>D00000013 轴承外圈</td>
+                        <td>20001 外圈磨外径</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>40</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="bg1">
+                        <td>50</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>1</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>60</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>2</td>
+                    </tr>
+                    <tr class="bg1">
+                        <td>70</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>3</td>
+                    </tr>
+                    <tr class="bg2">
+                        <td>80</td>
+                        <td>D00000010 上料</td>
+                        <td>20001 外圈磨加工_上料机</td>
+                        <td>2</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="table_planned  tables" style="border: none;margin-top: 20px">
+            <div class="header">
+                <div class="bodytitle2">外圈磨外径作业标准 B00000001<span style="float: right">版本号：v1</span></div>
+            </div>
+            <div class="modal-body">
+                <table class="table_nav2">
+                    <tr>
+                        <td class="f1">明细</td>
+                        <td class="ff1" colspan="3">
+                            <textarea></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="SPC" class="hide">
+    <div class="SPC" style="overflow: hidden">
+        <img src="../images/SPC.png">
+    </div>
+</div>
+
+<!--模态窗口,异常信息处理-->
+<div id="modal">
+    <div class="modal fade" id="sm" tabindex="-1" role="dialog" aria-labelledby="change" aria-hidden="true">
+        <div class="modal-dialog  change_password">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">返回</button>
+                    <h4 class="modal-title" id="saomiao">机器扫描</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="change_box">
+                        <div class="query_team1">
+                            <div class="query_left">
+                                <span>账户名：</span>
+                            </div>
+                            <div class="query_right">
+                                <input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="deleteTr(a)">
+                        重置
+                    </button>
+                    <button type="button" class="btn btn-primary  modal_hide">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="passwd" tabindex="-1" role="dialog" aria-labelledby="change" aria-hidden="true">
+        <div class="modal-dialog  change_password">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                        返回
+                    </button>
+                    <h4 class="modal-title" id="change">
+                        更改密码
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="change_box">
+                        <div class="query_team1">
+                            <div class="query_left">
+                                <span>账户名：</span>
+                            </div>
+                            <div class="query_right">
+                                <input disabled="disabled" value="${iaUser.cnum!}">
+                            </div>
+                        </div>
+                        <div class="query_team1">
+                            <div class="query_left">
+                                <span>原密码：</span>
+                            </div>
+                            <div class="query_right">
+                                <input>
+                            </div>
+                        </div>
+                        <div class="query_team1">
+                            <div class="query_left">
+                                <span>新密码：</span>
+                            </div>
+                            <div class="query_right">
+                                <input>
+                            </div>
+                        </div>
+                        <div class="query_team1">
+                            <div class="query_left">
+                                <span>确认密码：</span>
+                            </div>
+                            <div class="query_right">
+                                <input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        重置
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="yccl" tabindex="-1" role="dialog" aria-labelledby="ycxx" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                        返回
+                    </button>
+                    <h4 class="modal-title" id="ycxx">
+                        异常处理
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table_nav">
+                        <tr>
+                            <td class="f2">处理外容</td>
+                            <td class="ff2" colspan="3">
+                                <textarea></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="f2">处理状态</td>
+                            <td class="ff2">
+                                <select>
+                                    <option value="volvo">正在处理</option>
+                                    <option value="volvo">处理中</option>
+                                    <option value="volvo">处理失败</option>
+                                </select>
+                            </td>
+                            <td class="f2">处理结果</td>
+                            <td class="ff2">
+                                <select>
+                                    <option value="volvo">正在处理</option>
+                                    <option value="volvo">处理中</option>
+                                    <option value="volvo">处理失败</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        重置
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="sljc" tabindex="-1" role="dialog" aria-labelledby="sl" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                        返回
+                    </button>
+                    <h4 class="modal-title" id="sl">
+                        设备点检
+                    </h4>
+                </div>
+                <div class="modal-body" id="sbdjmodal">
+                    <div class="table_modal">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th width="300">点检项目编号</th>
+                                <th width="300">点检项目名称</th>
+                                <th width="300">点检项目要求</th>
+                                <th width="100">操作</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <div class="content" id="content">
+                            <table class="xwtable">
+                                <tbody>
+                                <tr class="bg1">
+                                    <td width="300">4100-PC-001</td>
+                                    <td width="300">点检项目1</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="0" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td width="300">4100-PC-002</td>
+                                    <td width="300">点检项目2</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="1" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg1">
+                                    <td width="300">4100-PC-001</td>
+                                    <td width="300">点检项目1</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="2" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td width="300">4100-PC-002</td>
+                                    <td width="300">点检项目2</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="3" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg1">
+                                    <td width="300">4100-PC-001</td>
+                                    <td width="300">点检项目1</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="4" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td width="300">4100-PC-002</td>
+                                    <td width="300">点检项目2</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="5" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg1">
+                                    <td width="300">4100-PC-001</td>
+                                    <td width="300">点检项目1</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="6" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td width="300">4100-PC-002</td>
+                                    <td width="300">点检项目2</td>
+                                    <td width="300">工作台面整洁度</td>
+                                    <td width="100"><div id="7" onclick="dianjian(this.id)" class="set setbox"></div></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <div class="modal fade" id="bj" tabindex="-1" role="dialog" aria-labelledby="jcbj" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                        返回
+                    </button>
+                    <h4 class="modal-title" id="jcbj">
+                        设备监控
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table_nav">
+                        <tr>
+                            <td class="f2">当前工位</td>
+                            <td class="ff2">G00000001 外圈磨外径</td>
+                            <td class="f2">当前设备</td>
+                            <td class="ff2">SB00000001 外圈磨机床</td>
+                        </tr>
+                        <tr>
+                            <td class="f2">管理状态</td>
+                            <td class="ff2">正常</td>
+                            <td class="f2">工作状态</td>
+                            <td class="ff2">工作</td>
+                        </tr>
+                        <tr>
+                            <td class="f2">主轴转速</td>
+                            <td class="ff2">1000转/分</td>
+                            <td class="f2">主轴转速</td>
+                            <td class="ff2">1000转/分</td>
+                        </tr>
+                        <tr>
+                            <td class="f2">进给尺寸</td>
+                            <td class="ff2">0.01mm</td>
+                            <td class="f2">进给尺寸</td>
+                            <td class="ff2">0.01mm</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">
+                        设备报修
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        设备盘点
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        异常报警
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+</body>
+<script src="../js/jquery-2.1.1.min.js"></script>
+
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+;
+    (function ($) {
+        $(window).on("load", function () {
+            $.mCustomScrollbar.defaults.theme = "dark-2"; //set "light-2" as the default theme
+            $("#content").mCustomScrollbar({
+                axis: "yx",
+                set_height:500
+            });
+        });
+    })(jQuery);
+</script>
+
+<script>
+    function deleteTr() {
+        $("#a1").remove();
+        alert("1");
+        $(".btn").parentsUntil(".modal").parent().modal("hide");
+
+    }
+
+    function modalhide() {
+        $(".btn").parentsUntil(".modal").parent().modal("hide")
+    }
+
+
+    function modalshow(e) {
+        var id = e.getAttribute("data-id");
+        alert("Id:" + id);
+        $("#sm").modal("show")
+    }
+</script>
+</html>

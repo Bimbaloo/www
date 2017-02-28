@@ -1,0 +1,39 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+    <script src="../js/angular.min.js"></script>
+</head>
+
+<body>
+<div ng-controller="MyController">
+    <h1>Hello {{ clock }}!</h1>
+</div>
+<script type="text/javascript">
+    function MyController($scope, $timeout) {
+        var updateClock = function () {
+            $scope.clock = new Date();
+            $timeout(updateClock() , 1000);
+        };
+        updateClock();
+    }
+
+//
+//    function Mycontroller($score){
+//        $score.clock = {
+//            now: new date()
+//        };
+//        var updateClock = function (){
+//            $score.clock.now = new date()
+//        };
+//        setInterval(function(){
+//            $score.$apply(updateClock);
+//        },1000)
+//        updateClock();
+//    }
+
+
+
+</script>
+</body>
+
+</html>

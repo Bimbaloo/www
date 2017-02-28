@@ -1,0 +1,95 @@
+html,body{width: 100%;height: 100%;padding: 0;margin: 0}
+*{font-family: 微软雅黑}
+body{
+    background-image:url("../images/bg-min.jpg");
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+header{
+    display: block;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    width: 625px;
+    height: 130px
+}
+#LOGO{width: 580px;height: 91px;margin: 50px 0 0 45px}
+#login_nav{
+    width: 626px;
+    height:465px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left:-313px;
+    margin-top: -232px;
+    background-color: rgba(51,51,51,0.6);
+}
+    .login{
+        width: 810px;
+        height: 74px;
+        background-image: url("../images/login.png");
+        background-repeat: no-repeat;
+        margin: 0 auto;
+    }
+    .login_nav{
+        width: 433px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 330px;
+        margin-top:45px 
+    }
+        .login_nav span{
+            font-size: 28px;
+            color: #fff;
+            letter-spacing:5px;
+        }
+   
+        .login_user,.login_password{
+            width:433px;
+            height:55px;
+            background-image: url("../images/use.png")
+        }
+        .login_user{background-position: 0 0;}
+        .login_password{background-position: 0 -112px}
+        .login_user *,.login_password *{
+            float: left;
+        }
+        .login_user{
+            margin:40px 0 57px 0;
+        }
+            input{
+                width:375px;
+                height:51px;
+                border:none;
+                margin:1px 0 0 55px;
+                font-size: 20px;
+                color: #999;
+                background-color:#ccc
+            }
+        button{
+            width:433px;
+            height:55px;
+            background-color:#2ea7e0;
+            margin:45px 0 0 0;
+            display:block;
+            
+            border: none;
+        }
+            button span{
+                color: #fff;
+                font-size: 30px;
+
+                letter-spacing: 6px;
+                line-height:20px;
+            }
+
+footer{
+    position: fixed;
+    right: 39px;
+    bottom: 23px;
+    color: #fff;
+    font-size: 24px
+}

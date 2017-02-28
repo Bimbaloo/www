@@ -1,0 +1,32 @@
+<head>
+    <meta charset="UTF-8">
+</head>
+<BODY style="overflow:auto;">
+
+<SCRIPT LANGUAGE="JavaScript">
+    <!--
+    var mode=0
+    function fullme(e)
+    {
+        if(document.all)
+        {
+            if(top.document.body.offsetWidth==screen.availWidth)
+            {
+                top.moveTo(0,0);
+                top.resizeTo(screen.availWidth,screen.availHeight);
+            }
+            else
+            {
+                top.moveBy(e.clientX-e.screenX,e.clientY-e.screenY);
+                top.resizeBy(screen.availWidth-top.document.body.offsetWidth,screen.availHeight-top.document.body.offsetHeight);
+            }
+        }
+        else
+        {
+            alert("请使用IE")
+        }
+    }
+    //-->
+</SCRIPT>
+<button onclick='fullme(event);'>全屏</button>
+</BODY>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body data-ng-controller="PhoneListCtrl">
+
+<p>
+    Search: <input data-ng-model="query">
+</p>
+<p>
+    Sort by:
+    <select data-ng-model="orderProp">
+        <option value="name">Alphabetical</option>
+        <option value="age">Newest</option>
+    </select>
+</p>
+<ul>
+    <li data-ng-repeat="phone in phones | filter:query | orderBy:orderProp">
+        <a href="#/phones/{{phone.id}}"><img height="100" data-ng-src="/{{phone.imageUrl}}"></a>
+        <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+        <p>{{phone.snippet}}</p>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    function PhoneListCtrl($scope, $http) {
+        $http.get('../json/phones.json').success(function(data) {
+            $scope.phones = data;
+        });
+        $scope.orderProp = 'age';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+h4, h5, h6,
+h1, h2, h3 {margin-top: 0;}
+ul, ol {margin: 0;}
+p {margin: 0;}
+html, body{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 100%;
+	background:#fff;
+}
+body {
+	font-family: Arial,"微软雅黑";
+	color: #434343;
+	height: 100%;
+	margin: 0;
+	background: url(../images/bg.png) center no-repeat;
+	background-size: cover;
+	width: 1920px;
+	height: 1200px;
+}
+image{
+	padding: 0;
+	margin:0;
+}
+.top_box{
+	width: auto;
+	height: 70px;
+	position: relative;
+	top: 110px;
+	left: 0;
+}
+	.top_box .top{
+		width: 1720px;;
+		height: 70px;
+		position:absolute;
+		margin-left: 120px;
+	}
+		.top_box .top p{
+			margin-right: 20px;
+			font-size: 35px;
+			float: right;
+			margin-top: -5px;
+			color: #fff
+		}
+			.top_box .top p span{
+				font-size: 30px
+			}
+.nav_box{
+	width: auto;
+	height: 772px;
+	position: relative;
+	top: 210px;
+	left: 0;
+}
+	.nav_box .nav{
+		position: absolute;
+		width: 1560px;
+		height: 772px;
+		left: 50%;
+		margin-left: -780px;
+	}
+	.nav_box .nav *{
+		float: left;
+	}
+	.nav_box .nav .nav_right{
+		float: left;
+		height:772px;
+		width:1182px;
+
+	}
+		.nav_box .nav .nav_right a{
+			margin-left:15px
+		}
+		.nav_box .nav .nav_right .xia{
+			margin: 15px 0 0 15px;
+		}
+		.nav_box .nav .nav_right p{
+			font-size: 38px;
+			color:#fff;
+			position: absolute;
+			margin-left:20px;
+			bottom:30px
+		}

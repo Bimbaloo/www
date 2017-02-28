@@ -1,0 +1,29 @@
+<!doctype html>
+<html data-ng-app>
+<head>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body data-ng-controller="PhoneListCtrl">
+
+<p>
+    Search: <input data-ng-model="query">
+</p>
+<ul>
+    <li data-ng-repeat="phone in phones | filter:query">
+        {{phone.name}}
+        <p>{{phone.snippet}}</p>
+    </li>
+</ul>
+
+<script type="text/javascript">
+    function PhoneListCtrl($scope) {
+        $scope.phones = [
+            {'name': 'Nexus S', 'snippet': 'Fast just got faster with Nexus S.'},
+            {'name': 'Motorola XOOM™ with Wi-Fi', 'snippet': 'The Next, Next Generation tablet.'},
+            {'name': 'MOTOROLA XOOM™', 'snippet': 'The Next, Next Generation tablet.'}
+        ];
+    }
+</script>
+
+</body>
+</html>

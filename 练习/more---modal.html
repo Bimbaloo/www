@@ -1,0 +1,314 @@
+<script type="text/javascript">
+    var boxId = 1;
+    var pageHtmlList = new Array(15);
+    function htmlToWord(haveImg) {
+        var oWD = new ActiveXObject("Word.Application");//建立word对象
+        var oDC = oWD.Documents.Add();//新建文档(对象)
+        oWD.Application.Visible = true;//word可视
+        var selection = oWD.Selection;//建立插入点对象
+        createHead(selection);//插入文件头内容
+        writeTOWord(1, selection, oDC, haveImg);//写入WORD文档内容
+    }
+
+    function createHead(selection) {
+        selection.Font.color = 16737846;//设置字体格式
+        selection.Font.Bold = 9999998;
+        selection.TypeText("金华移动市场运营分析周报");//标题
+        setFormat(selection, "金华移动市场运营分析周报", 22, 1);//设置字体大小和是否居中
+        selection.Font.Bold = 9999998;
+        selection.TypeParagraph();//换行
+        selection.TypeParagraph();
+        selection.TypeText("市场经营部                                   <%=thisMt.getThisMonthDate()%>");
+        setFormat(selection, "市场经营部                                   <%=thisMt.getThisMonthDate()%>", 14, 1);
+        selection.TypeParagraph();
+        selection.TypeParagraph();
+        selection.TypeParagraph();
+        selection.Font.color = -16777216;
+    }
+
+    function writeTOWord(num, selection, oDC, haveImg) {
+        var temp = $("Navigation" + num);
+        var tabledom = getChildren(temp, "TABLE");
+        var imgdom = getChildren(temp, "IMG");
+        fillcaption(num, selection);
+        writeIn(tabledom, imgdom, selection, oDC, haveImg);
+        selection.InsertBreak(7);
+        if (num < boxId) {
+            showMessage(boxId, num);
+            num++;
+            writeTOWord(num, selection, oDC, haveImg);
+        } else
+            alert("周报生成完成");
+    }
+
+    function writeIn(tabledom, imgdom, selection, oDC, haveImg) {
+        if (!(tabledom instanceof Array)) {
+            createTable(oDC, selection, tabledom);
+            fillTable(tabledom, selection.Tables(selection.Tables.Count), selection);
+            if (typeof(imgdom) == "object" && haveImg == true)
+                fillImg(imgdom.src, selection);
+        }
+        if (tabledom instanceof Array) {
+            var temp = tabledom.shift();
+            createTable(oDC, selection, temp);
+            fillTable(temp, selection.Tables(selection.Tables.Count), selection);
+            if (typeof(imgdom) == "object" && haveImg == true)
+                fillImg(imgdom.src, selection);
+            temp = tabledom.shift();
+            createTable(oDC, selection, temp);
+            fillTable(temp, selection.Tables(selection.Tables.Count), selection);
+        }
+    }
+
+    function createTable(wordDocument, selection, tabledom) {
+        var rownum = tabledom.rows.length;//获取行数
+        var cellnum = 0;
+        var tempdom = null;
+        for (i = 0; i < tabledom.rows.length; i++) {//根据行数循环
+            if (tabledom.rows(i).cells.length > cellnum) {
+                cellnum = tabledom.rows(i).cells.length;//获取最大的列数
+            }
+        }
+        wordDocument.Tables.Add(selection.Range, rownum, cellnum);//新建表格，行数为talbe的行数，列数取最大的列数
+        tempdom = selection.Tables(selection.Tables.Count);
+        if (cellnum > 9) {
+            tempdom.PreferredWidthType = 2;
+            tempdom.PreferredWidth = 133;
+        }
+    }
+
+    function getChildren(divDom, childType) {//根据childType从div里面取出子元素
+        try {
+            var doms = divDom.children;
+        } catch (e) {
+            alert(childType);
+        }
+        var returnDom = [];
+        for (i = 0; i < doms.length; i++) {
+            if (doms[i].tagName == childType) {
+                returnDom.push(doms[i]);
+            }
+        }
+        if (returnDom.length > 1) {
+            return returnDom;
+        } else
+            return returnDom.shift();
+    }
+
+    function fillcaption(num, selection) {//插入标题
+        if (num == 1) {
+            selection.TypeText("一、市场规模分析");
+            setFormat(selection, "一、市场规模分析", 12, 0);
+            selection.TypeParagraph();
+            selection.TypeText("（一）运营收入情况分析");
+            setFormat(selection, "（一）运营收入情况分析", 12, 0);
+            selection.TypeParagraph();
+        }
+        if (num == 3) {
+            selection.TypeText("(二)通话用户增长");
+            setFormat(selection, "(二)通话用户增长", 12, 0);
+            selection.TypeParagraph();
+        }
+        if (num == 5) {
+            selection.TypeText("（三）新增放号");
+            setFormat(selection, "（三）新增放号", 12, 0);
+            selection.TypeParagraph();
+        }
+        if (num == 7) {
+            selection.TypeText("二、市场份额分析");
+            setFormat(selection, "二、市场份额分析", 12, 0);
+            selection.TypeParagraph();
+            selection.TypeText("（一）新增市场");
+            setFormat(selection, "（一）新增市场", 12, 0);
+            selection.TypeParagraph();
+        }
+        if (num == 9) {
+            selection.TypeText("（二）存量（通话）市场");
+            setFormat(selection, "（二）存量（通话）市场", 12, 0);
+            selection.TypeParagraph();
+        }
+        if (num == 13) {
+            selection.TypeText("三、市场质量分析");
+            setFormat(selection, "三、市场质量分析", 12, 0);
+            selection.TypeParagraph();
+            selection.TypeText("（一）<%=thisMt.getThisMonth()%>月份离网数据");
+            setFormat(selection, "（一）<%=thisMt.getThisMonth()%>月份离网数据", 12, 0);
+            selection.TypeParagraph();
+        }
+        var caption = $("caption" + num);
+        selection.TypeText(caption.innerHTML);//标题
+        setFormat(selection, caption.innerHTML, 12, 0);
+        selection.TypeParagraph();
+    }
+
+    function fillImg(url, selection) {//根据图片地址URL写入WORD
+        selection.TypeParagraph();
+        selection.InlineShapes.AddPicture(url, false, true);
+        selection.ParagraphFormat.Alignment = 1;
+        selection.TypeParagraph();
+    }
+
+    function fillTable(htmltable, wordTable, selection) {//根据HTMLTABLE的内容写入WORD
+        var lastrows = 0;
+        var rownum = htmltable.rows.length;
+        if (wordTable.Style != "网格型")//把表格设置成网格型
+            wordTable.Style = "网格型";
+        for (i = 0; i < rownum; i++) {//循环设置表格，先根据行循环
+            var rows = 0;
+            for (j = 0; j < htmltable.rows(i).cells.length; j++) {//根据每行的列循环
+                rows += cellMerge(htmltable, selection, htmltable.rows(i).cells(j));//合并单元格，记录改变的表格位置
+                selection.Font.Name = "宋体";//设置字体为宋体
+                selection.ParagraphFormat.Alignment = 1;
+                selection.Font.Size = 9;
+                selection.TypeText(htmltable.rows(i).cells(j).innerText);//使用插入点插入内容
+                selection.MoveRight(1, 1);//下一格
+            }
+            lastrows = gotoNextRow(rows, lastrows, selection, htmltable.rows(i).cells);
+        }
+        wordTable.Style.ParagraphFormat.Alignment = 1;
+        selection.TypeParagraph();
+
+    }
+
+    function gotoNextRow(rows, lastrows, selection, cells) {
+        if (rows == 0 && lastrows == 0) {//本行以及上一行都没有跨行的单元格，则移动到本行首，同时下移到第二行
+            selection.MoveLeft(12, cells.length);
+            selection.MoveDown(5, 1);//移动到下一行,wbline=5就是下一行
+        }
+        if (lastrows > 0) {//如果上一行有跨行的单元格，则移动到本行首，暂时只能解决第一行为跨行格的问题
+            selection.MoveLeft(12, cells.length + lastrows);
+            selection.MoveDown(5, 1);
+            lastrows = 0;//移动结束清零
+        }
+        if (rows > 0) {//如果本行内有跨行，如此处理
+            selection.MoveRight(12, rows + 1);
+            lastrows = rows;
+        }
+        return lastrows;
+    }
+
+    function cellMerge(htmltable, selection, cell) {
+        var rows = 0;
+        if (cell.rowSpan > 1) {//如果是多行表格，合并单元格,并且记录下行数
+            selection.MoveDown(5, cell.rowSpan - 1, 1);
+            selection.Cells.Merge();
+            rows = cell.rowSpan - 1;
+        }
+        if (cell.colSpan > 1) {//如果是多列表格，合并单元格
+            selection.MoveRight(1, cell.colSpan, 1);
+            selection.Cells.Merge();
+        }
+        return rows;
+    }
+
+    function setFormat(selection, text, fontSize, align) {
+        selection.MoveLeft(1, text.length, 1);//根据内容的长度选取字体,moveXXX方法的第三个参数为1做为选取
+        selection.Font.Name = "宋体";//设置字体为宋体
+        selection.Font.Size = fontSize;//设置字符大小为9PX,其实就是小五
+        selection.MoveRight(1, 1);//右移一个字符，其实就是取消选定
+        selection.ParagraphFormat.Alignment = align;//居中对齐
+    }
+
+    function $(name) {
+        return document.getElementById(name);
+    }
+
+    function createXmlhttp() {
+        var http_request = false;
+        //开始初始化XMLHttpRequest对象
+        if (window.XMLHttpRequest) { //Mozilla 浏览器
+            http_request = new XMLHttpRequest();
+        } else if (window.ActiveXObject) { // IE浏览器
+            try {
+                http_request = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                }
+            }
+        }
+        if (!http_request) { // 异常，创建对象实例失败
+            window.alert("不能创建XMLHttpRequest对象实例.");
+            return false;
+        }
+        http_request.onreadystatechange = processRequest;
+
+        return http_request;
+    }
+
+    function sendRequest(url, id) {
+        xmlrequest = createXmlhttp();
+        boxId = id;
+        xmlrequest.open("GET", url, true);
+        xmlrequest.send(null);
+    }
+
+    function processRequest() {
+        if (xmlrequest.readyState == 4) { // 判断对象状态
+            if (xmlrequest.status == 200) {
+                processDiv(xmlrequest.responseTEXT);
+            }
+        }
+    }
+
+    function showMessage(num1, num2) {//显示已经显示在页面上的表格，和已经导出
+        $("messageBox").innerText = "已经生成" + num1 + "份表报，生成完毕可以执行导出。";
+        if (num1 >= 13) {
+            $("messageBox").innerText = "成功生成全部表报,成功导出" + num2 + "份表报。";
+            $("wordButton").disabled = false;
+            $("excelButton").disabled = false;
+            $("wordButtonNoImg").disabled = false;
+        }
+        if (num2 >= 13) {
+            $("messageBox").innerText = "成功生成全部表报,成功导出全部表报。";
+        }
+    }
+
+    function processDiv(responseText) {
+        $("Navigation" + boxId).innerHTML = responseText;
+        if (boxId < 14) {//当前的取出后，继续操作取下一个报表的table和图表
+            showMessage(boxId, 0);
+            boxId++;
+            sendRequest(pageUrlList[boxId], boxId);
+        }
+    }
+
+    function getDeptChind(url) {
+        thisId = url;
+        sendRequest(url);
+    }
+
+    var pageUrlList = new Array();
+    pageUrlList[1] = "provinceDayRevenue.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[2] = "cityDayRevenue.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[3] = "provinceNewUser.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[4] = "cityNewUser.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[5] = "provinceNewBill.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[6] = "cityNewBill.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[7] = "provinceQuotient.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[8] = "cityQuotient.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[9] = "provinceCallQuotient.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[10] = "provinceOnlyIncrease.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[11] = "cityCallQuotient.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[12] = "cityOnlyIncrease.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[13] = "provinceUserAway.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    pageUrlList[14] = "cityUserAway.jsp?date1=<%=thisMt.getThisMonthDate()%>";
+    sendRequest(pageUrlList[1], 1);
+</script>
+<script type="text/javascript">
+    function tableToExcel() {
+        window.clipboardData.setData("Text", document.all('result').outerHTML);
+        try {
+            var ExApp = new ActiveXObject("Excel.Application")
+            var ExWBk = ExApp.workbooks.add()
+            var ExWSh = ExWBk.worksheets(1)
+            ExApp.DisplayAlerts = false
+            ExApp.visible = true
+        } catch (e) {
+            alert("您的电脑没有安装Microsoft Excel软件！")
+            return false
+        }
+        ExWBk.worksheets(1).Paste;
+    }
+</script>

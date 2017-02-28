@@ -1,0 +1,313 @@
+/* reset */
+html{;background:#fff;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+html,body{width: 100%;height: 100%}
+*{font-family:"Arial","微软雅黑";}
+img{border:none;}
+em,strong{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+table {border-collapse:collapse;border-spacing:0; box-sizing:border-box;width: 100%}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4, h5, h6{font-size:100%;}
+button{border: none}
+input{background: none;border:1px solid}
+hr{margin: 0;padding: 0}
+input,button,select,textarea,button{ outline:none;}
+textarea{resize:none;}
+table tr{height: 66px}
+table *{font-size: 28px !important}
+.tleft{padding-left: 40px !important}
+.Scrollbar{overflow: auto;}
+input[type="checkbox"]{width: 20px;height:20px;border-radius:50%}
+
+q:before,q:after{content:'';}
+button,input,select,textarea{font-size:100%;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+address,cite,dfn,em,var{font-style:normal;}
+
+
+/* link */
+a{color:#36c;text-decoration:none;}
+a:hover{color:#f60;text-decoration:underline;}
+.clear{overflow:hidden;}
+.fleft{float:left}
+.fright{float:right}
+.bold{font-weight: bold}
+.hide{display: none;}
+.block{display: block;}
+.center{text-align: center;}
+.bule{color: #00a1ea}
+.green{color:#35a64f}
+.white{color:#ffffff}
+.black{color:#313a39}
+.bgBule{background-color: #00a1ea}
+.darkGrey{background-color:#2b3f4b}
+.frenchGrey{background-color:#3a4f5b}
+.nowShow{
+    position: absolute;
+    width: 6px;
+    height:133px;
+}
+
+#header{
+    height: 127px;
+    width: auto;
+    background-color: #fff;
+    border-bottom: 1px solid #3e3a39
+}
+    #fontLogo{
+        width: 429px;
+        height: 81px;
+        margin: 27px 0 0 34px
+    }
+    .fa{
+        float: right;
+        font-size: 60px;
+        color: #7d7d7d;
+    }
+    .icon-user,.icon-signout{
+        line-height: 127px ;
+    }
+    .icon-signout{
+        margin-right: 30px;
+    }
+    #user{
+        float: right;
+        margin:35px 30px 0 20px;
+    }
+        #user li{
+            font-size: 24px;
+            color: #7d7d7d;
+            font-weight: bold;
+            line-height: 27px;
+        }
+        #user .number{
+            font-size: 25px;
+        }
+
+#left{
+    width: 130px;
+    height:100%;
+    float: left;
+}
+    #menu{
+        width: 100%;
+        height: auto;
+    }
+        #menu li{
+            height: 133px;
+            width: 100%;
+            text-align:center;
+        }
+            #menu li span{
+                font-size: 24px;
+                display: inline-block;
+                line-height: 40px
+            }
+        
+#contentBox{
+    width:1790px;
+    height:1073px;
+    background-color: #f2f2ef;
+    position: relative;
+    left: 130px
+}
+footer{
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    color: #666;
+    font-size: 24px
+}
+.content,#content{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 20px 20px 0 20px
+}
+
+/* 左侧菜单 */
+.iconbox,.logobox{
+    width:110px;
+    height:60px;
+    float: left;
+    margin:20px 0 0 10px;
+    background-image: url("../images/menu.png");
+}
+.logobox{
+    margin-top:25px;
+}
+.minLogo}{ background-position: 0 -0;}
+.jqsm{
+    background-position: 0 -85px;
+}
+.scjh{
+    background-position: 0 -175px;
+}
+.zybz{
+    background-position: 0 -265px;
+}
+.jdl{
+    background-position: 0 -355px;
+}
+.sjcj{
+    background-position: 0 -445px;
+}
+.zxjc{
+    background-position: 0 -535px;
+}
+.sbdj{
+    background-position: 0 -625px;
+}
+.sbbx{
+    background-position: 0 -715px;
+}
+
+
+
+/*内容部分样式*/
+.zsd{
+    margin:0 10px 0 30px;
+    width: 42px;
+    height:42px;
+    background-image: url("../images/menu.png");
+}
+.sbzt{
+    margin-top:2px 
+}
+.zc{
+    background-position: -35px -814px
+}
+.yc{
+    background-position: -35px -905px
+}
+.bj{
+    background-position: -35px -995px
+}
+.gb{
+    background-position: -35px -1084px
+}
+/*固定内容部分样式*/
+
+#sbzt{
+    width: 100%;
+    height:104px;
+    border: 1px solid #3E3A39;
+    background-color: #fff;
+}
+#sbzt{
+    font-size: 28px;
+    font-weight: bold;
+}
+.F2{
+    width: 18%;
+    border-right:1px solid #3E3A39;
+    text-align: center;
+    border-collapse: collapse;
+}
+.f2{
+    padding:0 6px 0 6px;
+    width: 12%;
+    text-align:right;
+}
+.ff2{
+    padding:0 6px 0 6px;
+    width:29%;
+    text-align:left;
+}
+.adown{padding-top: 10px}
+.up{padding-bottom: 10px}
+/**/
+.tableTop{margin-top:20px;background-color: #fff }
+.tableTop2{margin-top:0;}
+.th,.td{
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff; 
+}
+.th{margin-left:36px}
+.yuan{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 10px 10px 0 30px
+}
+.FF2{
+    width: 32%;
+    text-align: left;
+    border-collapse: collapse;
+}
+.FF2 span{padding-left: 20px}
+.border{
+    border:1px solid #3E3A39;
+}
+.noBorder{
+    border:none !important;
+}
+.tableTop tr td{padding:0 10px; border-collapse: collapse; border:1px solid #3E3A39;}
+.name{font-size: 25px}
+
+.nav1{width: 8%}
+.nav2{width: 32%}
+.nav3{width: 60%}
+#content2 th{margin: 0}
+.f4{width: 25%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*css3 等分布局*/
+.box {  
+        width: 100%;  
+        background-color: #ffffff;  
+        overflow: auto;  
+        display: -moz-box;  
+        display: -webkit-box;  
+        display: -o-box;  
+        display: box;  
+    }  
+      
+    .item {  
+        margin: 30px 20px 30px 20px;  
+        height: 284px;
+        width: 340px;  
+        line-height: 40px;  
+        padding-left: 10px;  
+        background-color: #ddd;  
+        -webkit-box-flex: 1;  
+        /*规定框的子元素可伸缩其尺寸。*/  
+    }  
+    .item:first-child {  
+        margin-left:30px;   
+    }  
+    .item:last-child {  
+        margin-right:30px;   
+    }  
+      

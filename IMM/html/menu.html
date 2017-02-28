@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>注塑机联网管理系统</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.min.css"  rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <link href="../css/base.css"  rel="stylesheet" type="text/css">
+
+</head>
+<body>
+    <div id="header">
+        <div id="logo" onclick="modalshow()"></div>
+        <span><i class="fa icon-signout"></i></span>
+        <div  data-toggle="modal" data-target="#passwd" style="overflow: hidden;width: auto">
+            <ul id="user">
+               <li class="number">10040201</li>
+               <li>系统管理员</li>
+            </ul>
+        <span><i class="fa icon-user"></i> </span>
+        </div>
+    </div>
+    <div id="left">
+        <ul id="menu">
+            <li data-toggle="modal" data-target="#sm">
+                <div class="iconbox jqsm"></div>
+                <span>机器扫描</span>
+            </li>
+            <li data-toggle="modal" data-target="#sljc">
+                <div class="iconbox sljc"></div>
+                <span>上料检查</span>
+            </li>
+            <li data-toggle="modal" data-target="#bj">
+                <div class="iconbox bj"></div>
+                <span>报&nbsp;&nbsp;检</span>
+            </li>
+            <li>
+                <div class="iconbox scjk"></div>
+                <span>生产监控</span>
+            </li>
+        </ul>
+    </div>
+    <div id="right">
+        <div id="message">
+            <div id="zhusuji_box">
+                <div id="zhuangtai" class="normal">
+                        <span class="zhuangtai hide">该设备运行正常</span>
+                        <span class="zhuangtai hide">该设备运行异常</span>
+                        <span class="zhuangtai hide">该设备已报废</span>
+                        <span class="zhuangtai hide">该设备已被封存</span>
+                </div>
+                <div id="zhusuji"></div>
+            </div>
+
+            <div id="guige_box">
+                <div class="guige fleft">
+                    <div class="guige_left guige_leftbj">
+                        <span>设备编号</span>
+                    </div>
+                    <span class="guige_right">A123456789</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige">
+                    <div class="guige_left guige_leftbj">
+                        <span>设备规格</span>
+                    </div>
+                    <span class="guige_right">LBSWA96086S</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige">
+                    <div class="guige_left guige_leftbj">
+                        <span>设备名称</span>
+                    </div>
+                    <span class="guige_right">舜宇智能科技智能注塑机</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige">
+                    <div class="guige_left guige_leftbj">
+                        <span>工作中心</span>
+                    </div>
+                    <span class="guige_right">ZS0001 注塑成型A线</span>
+                    <div class="clear"></div>
+                </div>
+
+                <hr>   <!--分割线-->
+                <div class="guige">
+                    <div class="guige_left bold">生产物料:</div>
+                    <span class="guige_right">ZS0001 005L3839A-902-DM 3839A镜头镜片(二)</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige fleft">
+                    <div class="guige_left bold">生产排程:</div>
+                    <span class="guige_right">PCDJ-6155223</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige fright">
+                    <div class="guige_left">管理状态:</div>
+                    <span class="guige_right" id="guanli">正常</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige fleft">
+                    <div class="guige_left bold">生产订单:</div>
+                    <span class="guige_right">1452438</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="guige fright">
+                    <div class="guige_left">运行状态:</div>
+                    <span class="guige_right" id="yunxing">负载</span>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="table">
+            <ul class="chose">
+                <li class="production showcolor zhanshi" >生产信息</li>
+                <li class="ge">/</li>
+                <li class="abnormal zhanshi ">异常信息</li>
+            </ul>
+            <div class="table_production tables">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th  width="300">模次号</th>
+                            <th width="230">生成时间</th>
+                            <th width="150">射出时间(S)</th>
+                            <th width="130">周期时间(S)</th>
+                            <th width="130">产出数量</th>
+                            <th  width="190">产出合格数</th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div class="content demo-yx" >
+                        <table class="xwtable" >
+                            <tbody>
+                                <tr class="bg1" >
+                                    <td  width="300">0000004</td>
+                                    <td  width="230">2016-09-09 19:34:22</td>
+                                    <td  width="150">20</td>
+                                    <td  width="130">10</td>
+                                    <td  width="130">200</td>
+                                    <td  width="190">198</td>
+                                 </tr>
+                                <tr  class="bg2">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr class="bg1">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr class="bg1">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr  class="bg1">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                                <tr class="bg2">
+                                    <td>0000004</td>
+                                    <td>2016-09-09 19:34:22</td>
+                                    <td>20</td>
+                                    <td>10</td>
+                                    <td>200</td>
+                                    <td>198</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+            <div class="table_abnormal tables hide">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th width="180"><span>异常单号</span></th>
+                        <th width="150"><span>异常参数</span></th>
+                        <th width="120"><span>异常值</span></th>
+                        <th width="120"><span>标准值</span></th>
+                        <th width="120"><span>单位</span></th>
+                        <th width="120"><span>上限值</span></th>
+                        <th width="120"><span>下限值</span></th>
+                        <th width="250"><span>报警时间</span></th>
+                        <th  width="120"><span>异常处理</span></th>
+                    </tr>
+                    </thead>
+                </table>
+                <div class="content demo-yx" >
+                    <table class="xwtable" >
+                        <tbody>
+                            <tr class="bg1" id="a1" >
+                                <td  width="180"><span>S2000004</span></td>
+                                <td  width="150"><span>温度</span></td>
+                                <td  width="120"><span class="abnormal_message">142</span></td>
+                                <td  width="120"><span>100</span></td>
+                                <td  width="120"><span>摄氏度</span></td>
+                                <td  width="120"><span>80</span></td>
+                                <td  width="120"><span>10</span></td>
+                                <td  width="250"><span>2016-09-09 19:34:22</span></td>
+                                <td data-id="1" onclick="modalshow(this)" width="120"><div class="set setbox"></div></td>
+                            </tr>
+                            <tr  class="bg2" id="a2">
+                                <td><span>S2000004</span></td>
+                                <td><span>温度</span></td>
+                                <td><span>142</span></td>
+                                <td><span>100</span></td>
+                                <td><span>摄氏度</span></td>
+                                <td><span>80</span></td>
+                                <td><span>10</span></td>
+                                <td><span>2016-09-09 19:34:22</span></td>
+                                <td data-id="a2" onclick="modalshow(this)" width="120"><div class="set setbox"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--模态窗口,异常信息处理-->
+        <div class="modal fade" id="sm" tabindex="-1" role="dialog" aria-labelledby="change" aria-hidden="true">
+            <div class="modal-dialog  change_password">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">返回</button>
+                        <h4 class="modal-title" id="saomiao">机器扫描</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="change_box">
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>账户名：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="deleteTr(a)">
+                            重置
+                        </button>
+                        <button type="button" class="btn btn-primary  modal_hide">
+                            确定
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="passwd" tabindex="-1" role="dialog" aria-labelledby="change" aria-hidden="true">
+            <div class="modal-dialog  change_password">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                            返回
+                        </button>
+                        <h4 class="modal-title" id="change">
+                            更改密码
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="change_box">
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>账户名：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input disabled="disabled" value="${iaUser.cnum!}">
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>原密码：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>新密码：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>确认密码：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            重置
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            确定
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="yccl" tabindex="-1" role="dialog" aria-labelledby="ycxx" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                            返回
+                        </button>
+                        <h4 class="modal-title" id="ycxx" >
+                            异常处理
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table_nav">
+                            <tr>
+                                <td class="f2">处理内容</td>
+                                <td class="ff2" colspan="3">
+                                    <textarea></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="f2">处理状态</td>
+                                <td class="ff2">
+                                    <select>
+                                        <option value ="volvo">正在处理</option>
+                                        <option value ="volvo">处理中</option>
+                                        <option value ="volvo">处理失败</option>
+                                    </select>
+                                </td>
+                                <td class="f2">处理结果</td>
+                                <td class="ff2">
+                                    <select>
+                                        <option value ="volvo">正在处理</option>
+                                        <option value ="volvo">处理中</option>
+                                        <option value ="volvo">处理失败</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            重置
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            确定
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="sljc" tabindex="-1" role="dialog" aria-labelledby="sl" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                            返回
+                        </button>
+                        <h4 class="modal-title" id="sl">
+                            上料检查
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal_left fleft">
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>生产订单号：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>排程号：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>产品型号：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>设备编号：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>模次号：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team1">
+                                <div class="query_left">
+                                    <span>生产时间：</span>
+                                </div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal_right fright">
+                            <span>检查结果>></span>
+                            <div class="jieguobox">
+                                    <div class="jieguo ok hide"></div>
+                                    <div class="jieguo ng "></div>
+                            </div>
+                            <div class="modal_right_footer">
+                                <button type="button" class="btn btn-primary">重置</button>
+                                <button type="button" class="btn btn-primary">确定</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <div class="modal fade" id="bj" tabindex="-1" role="dialog" aria-labelledby="jcbj" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close icon-reply" data-dismiss="modal" aria-hidden="true">
+                            返回
+                        </button>
+                        <h4 class="modal-title" id="jcbj">
+                            报检
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table_nav">
+                            <tr>
+                                <td class="f2">生产订单</td>
+                                <td class="ff2">1452438</td>
+                                <td class="f2">生产排程</td>
+                                <td class="ff2">PCDJ-6155223</td>
+                            </tr>
+                            <tr>
+                                <td class="f2">生产物料</td>
+                                <td class="ff2">2005L3839A-902-DM </td>
+                                <td class="f2">工作中心</td>
+                                <td class="ff2">ZS0001</td>
+                            </tr>
+                            <tr>
+                                <td class="f2">设备编号</td>
+                                <td class="ff2">2005L3839A-902-DM </td>
+                                <td class="f2">计划数量</td>
+                                <td class="ff2">ZS0001</td>
+                            </tr>
+                        </table>
+                        <div class="input_nav">
+                            <div class="query_team">
+                                <div class="query_left"><span>报检数量：</span></div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                            <div class="query_team">
+                                <div class="query_left"><span>合格数量：</span></div>
+                                <div class="query_right">
+                                    <input>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">
+                            重置
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            确定
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+    </div>
+
+</body>
+<!--<script src="../js/jquery-1.11.0.min.js"></script>-->
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+    (function($){
+        $(window).on("load",function(){
+            $.mCustomScrollbar.defaults.theme="dark-2"; //set "light-2" as the default theme
+            $(".demo-y").mCustomScrollbar();
+            $(".demo-x").mCustomScrollbar({
+                axis:"x",
+                advanced:{autoExpandHorizontalScroll:true}
+            });
+            $(".demo-yx").mCustomScrollbar({
+                axis:"yx"
+            });
+        });
+    })(jQuery);
+</script>
+<!--<script>-->
+    <!--function deleteTr(a){-->
+        <!--$(a).remove();-->
+    <!--}-->
+
+<!--</script>-->
+<script>
+    function deleteTr(){
+        $("#a1").remove();
+        alert("1");
+        $(".btn").parentsUntil(".modal").parent().modal("hide");
+
+    }
+
+    function modalhide(){
+        $(".btn").parentsUntil(".modal").parent().modal("hide")
+    }
+
+
+
+    function modalshow(e){
+        var id=e.getAttribute("data-id");
+        alert("Id:"+id);
+        $("#sm").modal("show")
+    }
+</script>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body,ul,li,p,h1,h2,h3,h4,h5,h6,img,br,hr,table,tr,td,dl,dt,dd,form {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial,"微软雅黑";
+            font-size: 12px;
+            color: #434343;
+        }
+        .clear {
+            clear: both;
+            font-size: 0px;
+        }
+        ul,li {
+            list-style: none;
+        }
+        img {
+            border: none;
+        }
+
+        /*一般链接*/
+
+        /*默认样式重置*/
+
+        h1{
+            font-size: 30px;
+            color: #e3dede;
+            /*word-spacing:80px;*/
+            /*letter-spacing: 8px;*/
+            font-weight: lighter;
+        }
+
+        body{
+            background-color: #fff;
+        }
+        .head h1{
+            padding-top: 13px;
+            margin-left: 200px;
+        }
+        .nav{
+            width: 500px;
+            height: 500px;
+            margin-top: 37px;
+            margin-left: 30px;
+            background-color:#fff;
+            padding: 20px 16px;
+            border: solid #c5c5c5 1px;
+        }
+        .xwtable {
+            margin-left: auto;
+            margin-right: auto;;
+            width: 500px;
+            border-collapse: collapse;
+            border:1px solid #0a73a7;
+        }
+        table *{
+            padding: 0;
+            margin: 0;
+        }
+        thead th{
+            border: 1px solid #0a73a7;
+            font-weight:lighter;
+            font-size: 12px;
+            color: #333;
+        }
+
+        table tr, table td {
+            padding: 0;
+            margin: 0;
+        }
+        thead{
+            width: 280px;
+            height: 30px;
+            font-size: 12px;
+            font-weight: lighter;
+            color: #0d0d0d;
+        }
+        tbody tr{
+            height: 30px;
+            font-size: 12px;
+            color: #6f6f6f;
+
+        }
+        tbody tr td{
+            text-align: center;
+            border: 1px solid #0a73a7
+        }
+        tbody .bg1{
+            background-color:#b6c9e7;
+        }
+        tbody .bg2{
+            background-color: #fff
+        }
+    </style>
+</head>
+<body>
+
+
+    <table class="xwtable">
+        <thead>
+        <tr>
+            <th colspan="6" style="height: 40px;background-color: #0a73a7;color: #ffffff;font-size: 15px;">arap_adjustbill(调整单主表)</th>
+        </tr>
+        <tr style="background-color:#b6c9e7;height: 30px">
+            <th width="50">序号</th>
+            <th width="100">字段名</th>
+            <th width="100">中文名</th>
+            <th width="176">数据类型</th>
+            <th width="100">是否主键</th>
+            <th width="100">可空</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="bg2">
+            <td>1</td>
+            <td>adjbillno</td>
+            <td>调整单号</td>
+            <td>varchar</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>2</td>
+            <td>adjdate</td>
+            <td>调整日期</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>3</td>
+            <td>adjman</td>
+            <td>调整人</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>4</td>
+            <td>approvedate</td>
+            <td>审批日期</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>5</td>
+            <td>approveman</td>
+            <td>审批人</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>6</td>
+            <td>billno</td>
+            <td>单据号</td>
+            <td>varchar</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>7</td>
+            <td>billpk</td>
+            <td>单据pk</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>8</td>
+            <td>billtype</td>
+            <td>单据类型</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>9</td>
+            <td>dr</td>
+            <td>删除标志</td>
+            <td>smallint</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>10</td>
+            <td>iapprovestatus</td>
+            <td>审批状态</td>
+            <td>smallint</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>11</td>
+            <td>ibillstatus</td>
+            <td>单据状态</td>
+            <td>smallint</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>12</td>
+            <td>lybz</td>
+            <td>来源标志</td>
+            <td>smallint</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>13</td>
+            <td>pk_adjustbill</td>
+            <td>主键</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>14</td>
+            <td>pk_corp</td>
+            <td>单位编码</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg2">
+            <td>15</td>
+            <td>sequence</td>
+            <td>创建顺序</td>
+            <td>integer</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="bg1">
+            <td>16</td>
+            <td>ts</td>
+            <td>时间戳</td>
+            <td>char</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <th colspan="6" style="background-color: #0a73a7;color: #ffffff;font-size: 15px;" class="bg2" >结束</th>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

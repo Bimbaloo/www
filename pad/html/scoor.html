@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>滚动条调整</title>
+    <link rel="stylesheet" href="../css/list.css" charset="utf-8">
+    <script src="../js/html5.js"></script>
+    <script src="../js/css3-mediaqueries.js"></script>
+    <!-- [endif] -->
+
+    <!-- custom scrollbar stylesheet -->
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <style>
+        .nav{
+            width:417px;
+            height:560px;
+        }
+        .content{
+            width: 1760px;
+            height: 729px;
+            left: 200px;
+            border-left:none
+        }
+        .xwtable {
+            width: 1760px;
+            height: auto;
+            max-height: 670px;
+            border-collapse: collapse;
+            /*border:1px solid #ccc;*/
+            box-sizing:border-box;
+        }
+        table *{
+            padding: 0;
+            margin: 0;
+        }
+        thead th{
+            border: 1px solid #ccc;
+            font-weight:lighter;
+            font-size: 12px;
+            color: #333;
+            background-color: #dbcbec;
+        }
+
+        table tr, table td {
+            padding: 0;
+            margin: 0;
+        }
+        thead{
+            width: 280px;
+            height: 30px;
+            font-size: 12px;
+            font-weight: lighter;
+            color: #0d0d0d;
+            text-align: center;
+            /*border: 1px solid #dadada;*/
+            border-bottom:none;
+        }
+        tbody{
+            border-bottom: 2px solid #dadada ;
+        }
+        tbody td{
+            height: 30px;
+            font-size: 12px;
+            color: #6f6f6f;
+
+        }
+        tbody tr td{
+            text-align: center;
+        }
+        thead td{
+            border: 1px solid #ccc;
+            border-bottom: none;
+            background-color: #eaeaea;
+        }
+        tbody .bg1{
+            background-color: #ede7f3;
+        }
+        tbody .bg2{
+            background-color: #fff
+        }
+
+
+
+
+        .nav{
+            width: 1760px;
+            margin-top:80px;
+        }
+        .xwtable {
+            width: 100%;
+        }
+        table *{
+            padding: 0;
+            margin: 0;
+        }
+        thead th{
+            border-left: none;
+            border-top:3px solid #bfa4da;
+            border-bottom:3px solid #bfa4da;
+            border-right: none;
+            font-size: 32px;
+            color: #333;
+            font-weight: bold;
+            /*background-image:url(../images/bg3.png);*/
+            background-color:#dbcbec;
+            height: 95px;
+        }
+
+        table tr, table td {
+            padding: 0;
+            margin: 0;
+        }
+        thead{
+            width: 1760px;
+            height: 96px;
+            font-size: 24px;
+            font-weight: lighter;
+            color: #0d0d0d;
+        }
+        tbody tr td{
+            height: 91px;
+            font-size: 30px;
+            color: #6f6f6f;
+        }
+        tbody tr td{
+            text-align: center;
+            border:none;
+        }
+
+
+
+        .check,.check1{
+            position: relative;
+            height: 80px;
+            width:auto;
+            top:30px;
+        }
+        .check p{
+            font-size:35px;
+            color:#000;
+            line-height:80px;
+            float: left
+        }
+        .check input{
+            width:380px;
+            height:48px;
+            /*border:2px solid #432772;*/
+            background-color:rgba(0,0,0,0.0001);
+            float: left;
+            margin-left:15px;
+            margin-top:8px;
+            border: none;
+            border-bottom: 2px solid #432772;
+            font-size:40px;
+            text-align:center;
+            outline:none;
+            color: #000;
+        }
+        .check1 p{
+            font-size:35px;
+            color:#000;
+            line-height:80px;
+            float: left
+        }
+        .check1 input{
+            width:220px;
+            height:48px;
+            color: #000;
+            background-color:rgba(0,0,0,0.0001);
+            float:left;
+            margin-left:15px;
+            margin-top:8px;
+            border: none;
+            border-bottom: 2px solid #432772;
+            font-size:40px;
+            text-align:center;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+
+
+<div class="nav scrollTo-demo " style="background-color: #fff;box-sizing:border-box;">
+    <div class="content demo-yx" style="border-bottom: 3px solid #bfa4da">
+        <table class="xwtable" cellpadding="0" cellspacing="0">
+            <tbody>
+            <tr class="bg2">
+                <td  width="300">P8G15A-600-T</td>
+                <td  width="230">1100*1100</td>
+                <td  width="150">6</td>
+                <td  width="130">32564128</td>
+                <td  width="130">T</td>
+                <td  width="190">1</td>
+            </tr>
+            <tr class="bg1">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg2">
+                <td >P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg1">
+                <td >P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg2">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg1">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg2">
+                <td >P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg1">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg2">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            <tr class="bg1">
+                <td>P8G15A-600-T</td>
+                <td>1100*1100</td>
+                <td>6</td>
+                <td>32564128</td>
+                <td>T</td>
+                <td>1</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+<script>window.jQuery || document.write('<script src="../js/jquery-1.11.0.min.js"><\/script>')</script>
+<!-- custom scrollbar plugin -->
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script>
+    (function($){
+        $(window).on("load",function(){
+
+            $.mCustomScrollbar.defaults.theme="dark-2"; //set "light-2" as the default theme
+
+            $(".demo-y").mCustomScrollbar();
+
+            $(".demo-x").mCustomScrollbar({
+                axis:"x",
+                advanced:{autoExpandHorizontalScroll:true}
+            });
+            $(".demo-yx").mCustomScrollbar({
+                axis:"yx"
+            });
+        });
+    })(jQuery);
+</script>
+</html>

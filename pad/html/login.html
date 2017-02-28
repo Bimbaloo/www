@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>SMT联网管理系统终端</title>
+<link href="../css/login.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width,target-densitydpi=device-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="UTF-8">
+<script src="../js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+	<div class="login_bg">
+        <div class="login_head">
+            <img src="../images/login.png">
+        </div>
+        <div class="nav">
+            <div class="nav_box">
+                <img src="../images/user.png">
+                <input type="text" name="username" autocomplete="off"  value="用戶名" >
+            </div>
+            <div class="nav_box">
+                <img src="../images/password.png">
+                <input type="password" name="password" value="********">
+            </div>
+            <div class="nav_box">
+                <img src="../images/sb.png">
+                <input type="text"  autocomplete="off"  value="F4:8E:38:85:71:60" >
+            </div>
+            <div class="nav_button">
+                <p>登录</p>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+<script type="text/javascript">function getInfo(){
+    var s = "";
+//    s += " 网页可见区域宽："+ document.body.clientWidth+"\n";
+//    s += " 网页可见区域高："+ document.body.clientHeight+"\n";
+    s += " 网页可见区域宽："+ document.body.offsetWidth + " (包括边线和滚动条的宽)"+"\n";
+    s += " 网页可见区域高："+ document.body.offsetHeight + " (包括边线的宽)"+"\n";
+//    s += " 网页正文全文宽："+ document.body.scrollWidth+"\n";
+//    s += " 网页正文全文高："+ document.body.scrollHeight+"\n";
+//    s += " 网页被卷去的高(ff)："+ document.body.scrollTop+"\n";
+//    s += " 网页被卷去的高(ie)："+ document.documentElement.scrollTop+"\n";
+//    s += " 网页被卷去的左："+ document.body.scrollLeft+"\n";
+//    s += " 网页正文部分上："+ window.screenTop+"\n";
+//    s += " 网页正文部分左："+ window.screenLeft+"\n";
+    s += " 屏幕分辨率的高："+ window.screen.height+"\n";
+    s += " 屏幕分辨率的宽："+ window.screen.width+"\n";
+//    s += " 屏幕可用工作区高度："+ window.screen.availHeight+"\n";
+//    s += " 屏幕可用工作区宽度："+ window.screen.availWidth+"\n";
+//    s += " 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色"+"\n";
+//    s += " 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸"+"\n";
+    alert (s);
+}
+getInfo();
+</script>
+</html>		
+
+<!---->
+   

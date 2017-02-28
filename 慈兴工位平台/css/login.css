@@ -1,0 +1,86 @@
+
+
+/* 默认样式清除 */
+body{
+    background-image:url(../images/login_bg.png);
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+#login_nav{
+    width: 810px;
+    height: 610px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -405px;
+    margin-top: -350px;
+}
+    .login{
+        width: 810px;
+        height: 74px;
+        background-image: url("../images/login.png");
+        background-repeat: no-repeat;
+        margin: 0 auto;
+    }
+    .login_nav,.login_nav *{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .login_nav{
+        width: 600px;
+        height: 390px;
+        background-color: rgba(51,151,201,0.3);
+        margin-top:110px;
+        overflow: hidden;
+    }
+        .login_user,.login_password{
+            width: 480px;
+            height: 60px;
+            border-bottom: solid 1px #969798;
+        }
+        .login_user *,.login_password *{
+            float: left;
+        }
+        .login_user{
+            margin-top: 46px;
+        }
+            .user_img,.password_img{
+                width: 50px;
+                height:60px;
+                box-sizing: content-box;
+                background-repeat: no-repeat ;
+            }
+            .user_img{
+                background-image: url("../images/user.png");
+            }
+            .password_img{
+                background-image: url("../images/password.png");
+            }
+            input{
+                width: 420px;
+                height: 36px;
+                border:none;
+                margin-top: 12px;
+                font-size: 20px;
+                color: #fff;
+            }
+        .login_password{
+            margin-top: 20px;
+        }
+        button{
+            width: 480px;
+            height: 60px;
+            background-color: #3397c9;
+            margin-top: 78px;
+            display: block;
+        }
+            button span{
+                color: #fff;
+                font-size: 30px;
+                font-weight: bold;
+                letter-spacing: 6px;
+                line-height:20px;
+            }

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>慈兴数字化生产移动平台</title>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.css">
+    <link href="../css/base.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/swiper.css">
+</head>
+<body>
+
+    <div id="left" class="darkGrey">
+        <ul id="menu">
+            <li id="logomin">
+                <div class="logobox minLogo"></div>
+                <span class="white">慈兴集团</span>
+            </li>
+            <li id="jqsm" onclick="showMenu(this.id)" art="0" >
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox jqsm"></div>
+                <span class="white">机器扫描</span>
+            </li>
+            <li id="scjh" onclick="showMenu(this.id)" art="1" class="frenchGrey" >
+                <div class="nowShow bgBule"></div>
+                <div class="iconbox scjh"></div>
+                <span class="white">生产计划</span>
+            </li>
+            <li id="zybz" onclick="showMenu(this.id)" art="2">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox zybz"></div>
+                <span class="white">作业标准</span>
+            </li>
+            <li id="jdl" onclick="showMenu(this.id)" art="7">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox jdl"></div>
+                <span class="white">稼动率</span>
+            </li>
+            <li id="sjcj" onclick="showMenu(this.id)" art="3">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox sjcj"></div>
+                <span class="white">数据采集</span>
+            </li>
+            <li id="zxjc" onclick="showMenu(this.id)" art="4">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox zxjc"></div>
+                <span class="white">在线检查</span>
+            </li>
+            <li id="sbdj" onclick="showMenu(this.id)" art="5">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox sbdj"></div>
+                <span class="white">设备点检</span>
+            </li>
+            <li id="sbbx" onclick="showMenu(this.id)" art="6">
+                <div class="nowShow bgBule hide"></div>
+                <div class="iconbox sbbx"></div>
+                <span class="white">设备报修</span>
+            </li>
+        </ul>
+    </div>
+    <div id="right">
+        <div id="header">
+            <img id="fontLogo" class="fleft" src="../images/logo4.png" alt="logo图片">
+            <div id="logo" onclick="modalshow()" style=""></div>
+            <span>
+                <i class="fa icon-signout"></i>
+            </span>
+            <div data-toggle="modal" data-target="#passwd" style="overflow: hidden; width: 500px; float: right;">
+                <ul id="user">
+                    <li class="number">10040201</li>
+                    <li>系统管理员</li>
+                </ul>
+                <span>
+                    <i class="fa icon-user"></i>
+                </span>
+            </div>
+        </div>
+        <div id="contentBox">
+
+            <div id="common" class="common">
+                <table id="sbzt">
+                    <tr>
+                        <td class="green F2" rowspan="2">
+                            <div class="zsd fleft zc"></div>
+                            <span class="fleft sbzt">设备运行正常</span>
+                        </td>
+                        <td class="f2 adown">当前设备：</td>
+                        <td class="ff2 adown">SB00000001外圈磨机床</td>
+                        <td class="f2 adown">当前工位：</td>
+                        <td class="ff2 adown">G00000001外圈磨外径</td>
+                    </tr>
+                    <tr>
+                        <td class="f2 up">工作中心：</td>
+                        <td class="ff2 up">CS001-2慈兴外圈磨加工中心</td>
+                        <td class="f2 up">作业单元：</td>
+                        <td class="ff2 up">CS001-2慈兴外圈磨加工中心</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="uncommon">
+                <div id="content1" class="content hide">
+                    <table class="tableTop border">
+                        <tr class="bgBule">
+                            <th colspan="4">
+                                <span class="th">总计划</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">生产物料</span>
+                            </td>
+                            <td class="FF2" colspan="3">
+                                <span class="name">QJ210_A35 轴承</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">生产订单号</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">D20162011</span>
+                            </td>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">排程单号</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">P-18</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">计划开始时间</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">2016/11/28</span>
+                            </td>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">计划完成时间</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">2016/12/5</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">生产计划</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">1500</span>
+                            </td>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">计划合格</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">1400</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="tableTop border">
+                        <tr class="bgBule">
+                            <th colspan="4">
+                                <span class="th">工位计划</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">工位计划生产</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">5000</span>
+                            </td>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">工位计划合格</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">5000</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">工位实际生产</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">1500</span>
+                            </td>
+                            <td class="F2">
+                                <div class="yuan fleft bgBule"></div>
+                                <span class="fleft name">工位实际合格</span>
+                            </td>
+                            <td class="FF2">
+                                <span class="name">1400</span>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div id="content2" class="content hide">
+
+                    <table class="tableTop">
+                        <tr class="bgBule">
+                            <th class="nav1 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">序号</span>
+                            </th>
+                            <th class="nav2 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">名称</span>
+                            </th>
+                            <th class="nav3 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">描述</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar">
+                        <table class="tableTop tableTop2 border">
+                            <tr>
+                                <td rowspan="5" class="nav1 center">1</td>
+                                <td class="nav2 tleft">作业标准</td>
+                                <td class="nav3 tleft">作业标准描述</td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5" class="nav1 center">1</td>
+                                <td class="nav2 tleft">作业标准</td>
+                                <td class="nav3 tleft">作业标准描述</td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td rowspan="5" class="nav1 center">1</td>
+                                <td class="nav2 tleft">作业标准</td>
+                                <td class="nav3 tleft">作业标准描述</td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="noBorder" colspan="2">
+                                    <div class="yuan fleft bgBule"></div>
+                                    <span class="fleft name">生产物料</span>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+                <div id="content3" class="content hide">
+                    <table class="tableTop">
+                        <tr class="bgBule">
+                            <th class="f4 center border" style="border-bottom: none;">
+                                <span class="td">参数编号</span>
+                            </th>
+                            <th class="f4 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">参数名称</span>
+                            </th>
+                            <th class="f4 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">参数值</span>
+                            </th>
+                            <th class="f4 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">时间</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar">
+                        <table class="tableTop tableTop2 border">
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="f4 center border">1</td>
+
+                                <td class="f4 center border">主轴额定转速</td>
+
+                                <td class="f4 center border">100</td>
+
+                                <td class="f4 center border">2016/12/7</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="content4" class="content">
+
+                    <table class="tableTop">
+                        <tr class="bgBule">
+                            <th class="nav1 tleft">
+                                <img class="td inline" src="../images/x.png" /> 
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar1 swiper-container">
+                        <div class="box swiper-wrapper">
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">A图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">B图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">C图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">D图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">E图片</span>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                    <table class="tableTop" style="margin-top: 0;">
+                        <tr class="bgBule">
+                            <th class="nav1 tleft">
+                                <span class="td">R图</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar1 swiper-container">
+                        <div class="box swiper-wrapper">
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">A图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">B图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">C图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">D图片</span>
+                            </div>
+                            <div class="swiper-slide item">
+                                <div class="picBox bgWhite"></div>
+                                <span class="picName">E图片</span>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+
+                <div id="content5" class="content hide">
+                    <table class="tableTop">
+                        <tr class="bgBule">
+                            <th class="a1 center border" style="border-bottom: none">
+                                <input id="checkname" type="checkbox" />
+                            </th>
+                            <th class="a2 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">序号</span>
+                            </th>
+                            <th class="a3 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">名称</span>
+                            </th>
+                            <th class="a4 center border" style="border-bottom: none; border-left: none;">
+                                <span class="td">描述</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar5">
+                        <table class="tableTop2 border bgWhite">
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                            <tr>
+                                <td class="a1 center border">
+                                    <input name='checkname' type="checkbox" />
+                                </td>
+                                <td class="a2 center border">主轴额定转速</td>
+                                <td class="a3 center border">100</td>
+                                <td class="a4 center border">2016/12/7</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="buttonBox">
+                        <button class="button bgBule center">
+                            <span class="white buttonspan">提交</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="content6" class="content hide">
+                    <table class="tableTop border" style="border-bottom: none">
+                        <tr class="bgBule">
+                            <th colspan="4">
+                                <span class="th">设备常发故障</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar6" >
+                        <table class="tableTop tableTop2 border">
+                            <tr>
+                                <td class="S2">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="SS2" colspan="3">
+                                    <span class="name">QJ210_A35 轴承</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="S2">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="SS2" colspan="3">
+                                    <span class="name">QJ210_A35 轴承</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="S2">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="SS2" colspan="3">
+                                    <span class="name">QJ210_A35 轴承</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="S2">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="SS2" colspan="3">
+                                    <span class="name">QJ210_A35 轴承</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="S2">
+                                    <input type="checkbox" />
+                                </td>
+                                <td class="SS2" colspan="3">
+                                    <span class="name">QJ210_A35 轴承</span>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <table class="tableTop border">
+                        <tr class="bgBule">
+                            <th colspan="4">
+                                <span class="th">其他故障描述</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="4">
+                                <label>
+                                    <textarea></textarea>
+                                </label>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="buttonBox">
+                        <button class="button bgBule center">
+                            <span class="white buttonspan">报修</span>
+                        </button>
+                    </div>
+                </div>
+           
+                <div id="content7" class="content hide">
+                    <table class="tableTop border">
+                        <tr class="bgBule">
+                            <th colspan="4">
+                                <span class="th">其他故障描述</span>
+                            </th>
+                        </tr>
+                    </table>
+                    <div class="Scrollbar bgWhite" >
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer> Copyright &copy; 2016 宁波舜宇智能科技有限公司 </footer>
+    </div>
+</body>
+<script src="../js/jquery-2.1.1.min.js"></script>
+<script src="../js/base.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        slidesPerView: 4,
+        paginationClickable: true,
+        spaceBetween: 30,
+        freeMode: true,
+        loop : true
+    });
+    </script>
+</html>
